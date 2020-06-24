@@ -25,7 +25,17 @@ class App extends Component {
     const web3 = window.web3;
 
     const accounts = await web3.eth.getAccounts();
-    console.log(accounts[0]);
+    this.setState({ account: accounts[0] });
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      account: "",
+      productCount: 0,
+      products: [],
+      loading: true,
+    };
   }
 
   render() {
@@ -40,6 +50,13 @@ class App extends Component {
           >
             Talha Abbasi's Marketplace
           </a>
+          <ul className="navbar-nav px-3">
+            <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
+              <small className="text-white">
+                <span id="account">{this.state.account}</span>
+              </small>
+            </li>
+          </ul>
         </nav>
         <div className="container-fluid mt-5">
           <div className="row">
